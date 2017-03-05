@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var TaskSchema = new _mongoose2.default.Schema({
     user: {
-        type: _mongoose2.default.Schema.Types.ObjectID,
+        type: _mongoose2.default.Schema.Types.ObjectId,
         required: true,
         ref: 'users'
     },
