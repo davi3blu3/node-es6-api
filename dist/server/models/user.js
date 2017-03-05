@@ -28,14 +28,14 @@ var UserSchema = new _mongoose2.default.Schema({
 });
 
 UserSchema.pre('save', function (next) {
-    var user = undefined;
+    var user = this;
 
     if (!user.isModified('password')) {
         return next();
     }
     _bcrypt2.default.genSalt(10, function (err, salt) {
         if (err) return next(err);
-        _bcrypt2.default.hash(user.password, salt, function (hasErr, hash) {
+        _bcrypt2.default.hash(user.password, salt, function (hashErr, hash) {
             if (hashErr) return next(hashErr);
             user.password = hash;
             next();
