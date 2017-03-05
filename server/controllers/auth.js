@@ -50,3 +50,5 @@ function respondJWT(req, res) {
         });
     }
 }
+
+export default { authenticate, generateToken, respondJWT };
