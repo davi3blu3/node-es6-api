@@ -52,7 +52,7 @@ function remove(req, res, next) {
     const user = req.dbUser;
     user.remove()
         .then(() => res.sendStatus(204),
-        (e) =>> next(e));
+        (e) => next(e));
 }
 
 export default { load, get, create, update, list, remove };
