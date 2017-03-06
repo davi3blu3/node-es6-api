@@ -32,8 +32,8 @@ function generateToken(req, res, next) {
     const jwtData = {
         expiresIn: config.jwtDuration
     };
-    const secret = {config.jwtSecret;
-    req.token = jwt.sign(jwtPayload, secret, jwtData)};
+    const secret = config.jwtSecret;
+    req.token = jwt.sign(jwtPayload, secret, jwtData);
 
     next();
 }

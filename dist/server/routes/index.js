@@ -16,6 +16,10 @@ var _tasks = require('./tasks');
 
 var _tasks2 = _interopRequireDefault(_tasks);
 
+var _auth = require('./auth');
+
+var _auth2 = _interopRequireDefault(_auth);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
@@ -29,6 +33,7 @@ router.get('/api-status', function (req, res) {
 
 router.use('/users', _users2.default);
 router.use('/tasks', _tasks2.default);
+router.use('/auth', _auth2.default);
 
 exports.default = router;
 module.exports = exports['default'];
