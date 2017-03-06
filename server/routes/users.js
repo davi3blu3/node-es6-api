@@ -1,11 +1,12 @@
 import express from 'express';
 import userCtrl from '../controllers/users';
+import auth from '../../config/jwt';
 
 const router = express.Router();
 
 router.route('/')
     /** GET /api/users - Get list of users */
-    .get(userCtrl.list)
+    .get(auth, userCtrl.list)
 
     /** POST /api/users - Create new user */
     .post(userCtrl.create);
