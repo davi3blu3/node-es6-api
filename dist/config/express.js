@@ -8,6 +8,10 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
+var _expressValidation = require('express-validation');
+
+var _expressValidation2 = _interopRequireDefault(_expressValidation);
+
 var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
@@ -22,6 +26,18 @@ var app = (0, _express2.default)();
 
 app.use(_bodyParser2.default.json());
 app.use(_bodyParser2.default.urlencoded({ extended: true }));
+
+// validation error handling
+app.use(function (err, req, res, next) {
+    if (err instanceof _expressValidation2.default.ValidationError) {
+        res.status(err.status).json(err);
+    } else {
+        res.status(500).json({
+            status: err.status,
+            message: err.message
+        });
+    }
+});
 
 // mount all routes on /api path
 app.use('/api', _routes2.default);
